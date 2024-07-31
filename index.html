@@ -1,0 +1,101 @@
+<html><head>
+<style>
+table,td{
+  border: 1px solid black;
+}
+option {
+  font-size: 30px;
+}
+</style>
+
+</head>
+<body onbeforeunload="return myFunction()">
+
+<label for="browser">Customer name :</label>
+<input list="browsers" name="browser" id="browser" onkeyup="myFunction()">
+<label for="num">Amount:</label>
+<input style="font-size:20px" type="number" name="num" id="num">
+
+<datalist id="browsers">
+  <option value="micro">
+  </option><option value="Firefox">
+  </option><option value="Chrome">
+  </option><option value="Opera">
+  </option><option value="Safari">
+</option></datalist>
+<button type="button" onclick="myFunction()">Try it</button>
+<p id="demo">184</p>
+<table style="margin-top:-1rem; font-size:30px" id="myTable">
+  <tbody><tr><td>6</td><td>52</td></tr><tr><td>5</td><td>52</td></tr><tr><td>4</td><td>45</td></tr><tr><td>3</td><td>11</td></tr><tr><td>2</td><td>12</td></tr><tr><td></td><td>12</td></tr><tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</tbody></table>
+<br>
+
+<button type="button" onclick="myFunction()">Try it</button>
+<button onclick="window.print()">Print this page</button>
+ <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="page.html">Download</a>
+
+
+<script>
+  var sum=0;
+  var count=2;
+function myFunction() { 
+var j=["a1","s1","f1","t1","s2","i1","n1","r1"];
+jk=["abhiruchi","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
+  let x = document.getElementById("browser"); 
+  for(i=0;i<10;i++){
+  if(x.value==j[i])
+  {
+  x.value=jk[i];
+}}
+
+if((document.getElementById("num").value)!="")
+{
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  count++;
+if((document.getElementById("browser").value)=="micro"|| (document.getElementById("browser").value)=="" )
+{
+  cell1.innerHTML =count-1;
+cell2.innerHTML =document.getElementById("num").value
+}
+else
+{
+  cell1.innerHTML = document.getElementById("browser").value
+  cell2.innerHTML =document.getElementById("num").value
+}
+document.getElementById("browser").value="";
+  sum+=parseInt(document.getElementById("num").value);
+document.getElementById("num").value="";
+  document.getElementById("browser").value=count;
+  
+  document.getElementById("demo").innerHTML=sum;
+  document.getElementById("demo1").innerHTML=sum;
+}
+  if(count<15)
+  {
+  var h=""+count
+location.hash = h;
+}
+  return "u";
+}
+    
+</script>
+
+  <p style="margin-left:20rem; font-size:100px" id="demo1">184</p>
+
+
+
+</body></html>

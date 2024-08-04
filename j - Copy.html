@@ -1,0 +1,76 @@
+<html><head>
+<style>
+table,td{
+  border: 1px solid black;
+}
+option {
+  font-size: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<label for="browser">Customer name :</label>
+<input list="browsers" name="browser" id="browser" >
+<input type="text" name="a" id="a" >
+<label for="num">Amount:</label>
+<input style="font-size:20px" type="number" name="num" id="num">
+
+<datalist id="browsers">
+  <option value="micro">
+  </option><option value="Firefox">
+  </option><option value="Chrome">
+  </option><option value="Opera">
+  </option><option value="Safari">
+</option></datalist>
+<button type="button" onclick="myFunction()">Try it</button>
+<button type="button" onclick="show()">show</button>
+<p id="demo">31</p>
+<table id="myTable">
+  <tbody><tr><td>Opera</td><td>31</td></tr><tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</tbody></table>
+<br>
+
+
+
+
+<script>
+  var sum=0,a=-1;
+var table = document.getElementById("myTable");
+function myFunction()
+{
+a=document.getElementById("a").value;
+var kb=document.getElementById("browser").value
+  if(kb=="ok123")
+{
+
+var b=document.getElementById("num").value;
+
+localStorage.setItem("gh"+a,b);
+
+
+table.rows[a].cells[1].textContent=localStorage.getItem("gh"+a)
+  }
+}
+for(i=0;i<5;i++)
+{
+table.rows[i].cells[1].textContent=localStorage.getItem("gh"+i);
+}
+</script>
+
+
+
+</body>
+</html>

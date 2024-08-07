@@ -52,6 +52,18 @@ option {
 <script>
   var sum=0;
   var count=1;
+  function work()
+{
+    if(document.getElementById("gh").value!="")
+    {
+ var table = document.getElementById("myTable");
+ sum=(sum-parseInt(table.rows[0].cells[1].textContent))+parseInt(document.getElementById("gh").value);
+ table.rows[0].cells[1].textContent=document.getElementById("gh").value;
+document.getElementById("gh").value="";
+document.getElementById("demo").innerHTML=sum;
+  document.getElementById("demo1").innerHTML=sum;
+}
+}
 function myFunction() {  
  var j={M1:"m.s store",A1:"A1 kodi"
         ,S1:"sri sai",P2:"podi corner tokkutu",
@@ -111,16 +123,7 @@ location.hash = h;
   return "u";
 }
      
-function work()
-{
-    if(document.getElementById("gh").value!="")
-    {
- var table = document.getElementById("myTable");
- 
- table.rows[0].cells[1].textContent=document.getElementById("gh").value;
-document.getElementById("gh").value="";
-}
-}
+
     
 </script>
 

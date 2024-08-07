@@ -1,4 +1,4 @@
- <html><head>
+<html><head>
 <style>
 table,td{
   border: 1px solid black;
@@ -44,29 +44,48 @@ option {
 <button type="button" onclick="myFunction()">Try it</button>
 <button onclick="window.print()">Print this page</button>
  <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="page.html">Download</a>
-
-
+<br/>
+<label for="gh">change</label>
+<input type="number" name="gh"  id="gh">
+<button onclick="work()">enter</button>
+ 
 <script>
   var sum=0;
   var count=1;
-function myFunction() { 
-var j=["m1","s1","b1","n1","m2","c1","h1","m3"];
-jk=["mahalingeshwara hotel","sri sai sundar"," bar","nmpt","matashri","canteen","hosabettu","madya"];
-  let x = document.getElementById("browser"); 
-  for(i=0;i<10;i++){
-  if(x.value==j[i])
-  {
-  x.value=jk[i];
-}}
-
-if((document.getElementById("num").value)!="")
+function myFunction() {  
+ var j={M1:"m.s store",A1:"A1 kodi"
+        ,S1:"sri sai",P2:"podi corner tokkutu",
+        B1:"Bagavathi store yeyadi",P3:"podi corner ullala",
+        N1:"N.s traders",R2:"hotel ranjith",
+M2:"mart",I1:"I.H bazar"
+        ,C1:"canteen",S2:"S.k store",
+        H1:"hosabettu",S3:"swagath tokkutu"
+        ,F1:"F.M store",B1:"badriya store olapete"
+       ,P1:"P.M store asaigoli",S1:"sulochana store",
+       B1:"big mart kallapu",C1:"charmuri stall madoor"
+       ,J1:"jamaliya",D1:"sri durga hotel",
+       R1:"railway canteen",V1:"vidyanath",
+       K1:"K.H.K",U1:"uchila canteen",
+       J1:"joy store",M1:"Mangalore super bazar tokkutu",
+       S1:"sri kateel",K1:"kolya Chinese food",
+       A1:"abhiruchi"};
+let x = document.getElementById("browser");
+for(i in j)
+{
+    if(x.value==i)
+    {
+        x.value=j[i];
+    }
+}
+var b=document.getElementById("browser").value
+if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
 {
   var table = document.getElementById("myTable");
   var row = table.insertRow(0);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   count++;
-if((document.getElementById("browser").value)=="micro"|| (document.getElementById("browser").value)=="" )
+if((document.getElementById("browser").value)=="micro"|| (document.getElementById("browser").value)=="." )
 {
   cell1.innerHTML =count-1;
 cell2.innerHTML =document.getElementById("num").value
@@ -79,7 +98,7 @@ else
 document.getElementById("browser").value="";
   sum+=parseInt(document.getElementById("num").value);
 document.getElementById("num").value="";
-  document.getElementById("browser").value=count;
+  document.getElementById("browser").value=""+count+".";
   
   document.getElementById("demo").innerHTML=sum;
   document.getElementById("demo1").innerHTML=sum;
@@ -91,10 +110,22 @@ location.hash = h;
 }
   return "u";
 }
+     
+function work()
+{
+    if(document.getElementById("gh").value!="")
+    {
+ var table = document.getElementById("myTable");
+ 
+ table.rows[0].cells[1].textContent=document.getElementById("gh").value;
+document.getElementById("gh").value="";
+}
+}
     
 </script>
 
   <p style="margin-left:20rem; font-size:100px" id="demo1"></p>
+
 
 
 

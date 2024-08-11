@@ -49,16 +49,31 @@ option {
 <script>
   var sum=0;
   var count=1;
-function myFunction() { 
-var j=["S1","G1","E1","B1","F1","G2","F2","A1","D1","B2","C1","A2","P1","F3"];
-jk=["sri sai","Hotel garodi"," hotel esanya","basaveshwara podi corner","Fathima store",
-    "magaladevi gen store","Fish tava","adyar garden","Durga ganesh gen store","mini mart bendoorwell","hotel chirag","hotel Ashok","p.s traders","f1 podi corner"];
-  let x = document.getElementById("browser"); 
-  for(i=0;i<j.length;i++){
-  if(x.value==j[i])
-  {
-  x.value=jk[i];
-}}
+function myFunction() {  
+ var j={M1:"mangaladevi gen store",A1:"A1 podi stall"
+        ,S1:"s.s mini mart",P1:"p.s traders",
+        B1:"Bismilla bazar",
+        N1:"New vijay sweets",C5:"Chicken stall farangipete"
+        ,C1:"charmuri stall",
+        ,F1:"F1 vegetable"
+       
+       ,C2:"chirag hotel"
+       ,J1:"jayaraj store",D1:"durga ganesh gen store"
+       ,V1:"vijay sweets",
+       K1:"Kalladka super bazar",
+       A2:"hotel ashok",C3:"chick form",
+       F2:"Fathima store",C4:"Chicken halal",F3:"Fish tava”
+      ,B3:"basaveshwara podi corner",D2:"deepee store",
+        G1:"hotel garodi",E1:"hotel Eshanya"
+        };
+let x = document.getElementById("browser");
+for(i in j)
+{
+    if(x.value==i)
+    {
+        x.value=j[i];
+    }
+}
 var b=document.getElementById("browser").value
 if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
 {

@@ -5,6 +5,14 @@
 	</div>
 </div>
 <style>
+
+table,td{
+  border: 1px solid black;
+}
+option {
+  font-size: 30px;
+}
+
 input {
   border: 0 none;
 }
@@ -55,14 +63,32 @@ input {
   border-bottom: 2px solid #e65c00;
 }
 </style>
+<body onbeforeunload="return myFunction()">
+<input type="number" id="num">
 <button onclick="add()">Click</button>
+<button onclick="myFunction1()">Click</button>
 <p id="answer"></p>
+<table style="margin-top:-1rem; font-size:30px" id="myTable">
+  <tbody><tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</tbody></table>
+<p style="margin:1rem 15rem; font-size:200px" id="demo"></p>
 <script>
 const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 function myFunction() { 
 var j=["a1","s1","f1","t1","s2","i1","n1","r1"];
-jk=["abhiruchi","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
+jk=["Hoppala","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
   let x = document.getElementById("fruit"); 
   for(i=0;i<10;i++){
   if(x.value==j[i])
@@ -124,6 +150,7 @@ function useSuggestion(e) {
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
+
 function add()
 {
   var numOne ;
@@ -149,7 +176,38 @@ document.getElementById("answer").innerHTML="";
 
   return "u";
 }
+var count=0;
 
+  var sum=0;
+  var count=1;  
+function myFunction1() {
+var b=document.getElementById("fruit").value
+if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
+{
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML =b;
+cell2.innerHTML =document.getElementById("num").value
 
+count++;
+document.getElementById("fruit").value="";
+  sum+=parseInt(document.getElementById("num").value);
+document.getElementById("num").value="";
+  document.getElementById("fruit").value=""+count+".";
+  
+  document.getElementById("demo").innerHTML=sum;
+  document.getElementById("demo1").innerHTML=sum;
+}
+  if(count<15)
+  {
+  var h=""+count
+location.hash = h;
+}
+  return "u";
+}
+    
 
 </script>
+</body>

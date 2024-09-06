@@ -1,0 +1,228 @@
+<div class="search-container">
+	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction1()">
+	<div class="suggestions">
+		<ul></ul>
+	</div>
+</div>
+<style>
+
+table,td{
+  border: 1px solid black;
+}
+option {
+  font-size: 30px;
+}
+
+input {
+  border: 0 none;
+}
+
+.search-container {
+  width: 400px;
+  position: relative;
+  margin: 15px auto;
+}
+.search-container input,
+.search-container .suggestions {
+  width: 100%;
+  background: #fff;
+  text-align: left;
+}
+.search-container input {
+  background: rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0 10px;
+}
+.search-container .suggestions {
+  position: absolute;
+  top: 60px;
+}
+
+ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+}
+ul.has-suggestions {
+  display: block;
+}
+ul li {
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+}
+ul li:hover {
+  background-color: #e65c00;
+}
+
+input {
+  border-bottom: 2px solid #e65c00;
+}
+</style>
+<body onbeforeunload="return myFunction1()">
+<input type="number" id="num">
+<button onclick="add()">Click</button>
+<button onclick="myFunction1()">Click</button>
+<p id="answer"></p>
+<table style="margin-top:-1rem; font-size:30px" id="myTable">
+  <tbody><tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+  </tr>
+  <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+  </tr>
+  <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+  </tr>
+</tbody></table>
+<p style="margin:1rem 15rem; font-size:200px" id="demo"></p>
+<script>
+const input = document.querySelector('#fruit');
+const suggestions = document.querySelector('.suggestions ul');
+
+const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Shakthinagar ","Fathima Super Bazar Vamanjoor",
+               "Gupta Store Shakthinagar"," Kaveri General Store Kaikamba"," Mahaganapathi Store Vamanjoor"," Mammas Store Shakthinagar"
+               ," Nazaran Hotel Ulaibettu"," NS General Store Ganjimatta Suralpady"," Sagar Gen Store Vamanjoor"," SALWA SUPER BAZAR GANJIMATT",
+               " SATYA GEN STORE SHAKTHINAGAR"," SHAKTHINAGAR CANTEEN SHAKTHINAGAR"," Shri Amrutheshwara Store Kettikal","SANJEEVINI AYURVEDIC AND GENERAL STORES 
+               "," Madhura Bakery Kulshekar Dairy "," Pappas Fast Food Kulshekar Dairy ","Sadguru Sri Sai Store Shakthinagara ","SHAKTHINAGAR CANTEEN SHAKTHINAGAR "
+               ,"Narayan Store Shakthinagara ","Maxi General Store Shakthinagar "," Shree Devi Fancy & Gen Store ","Gupta Store Shakthinagar "," Vinayaka Store Shakthinagar "
+               ," RAJEEVA SALIAN STORE "," Rose General Store Kulshekar "," Kudla Kitchen Kulshekar [Savi] "," Gajanana Gen Store Kulshekar "," Shri Ganga Mini Mart Jyothinagar "
+               ," Naveen Store Neermarga "," Lobo Gen Store Neermarga "," Om Sai Distributor Neermarga ","Durgambika Fast Food Neermarga "," Pork Stall Neermarga "
+               ," SOUZA GENERAL ST NEERMARGA ","Alwin General Store Vontemar ","Anna Mariya Gen Store Neermarga "," Yashoda Nilya Vamanjoor "," SNEHA SUPER BAZAR VAMANJOOR ",
+               " Sri Durga Store Moodshedde "," Sheddya St Moodshedde [Seguira] "," Vamnjoor Traders Vamanjoor ","JABBAR STORE ULAIBETTU "," Shree Kateel Fancy Kettikal ",
+               " Shekar Canteen Ulaibettu "," Nazaran Hotel Ulaibettu "," Kaikamba Mutton & Chicken Stall "," Gopal Canteen Kaje Padav","Laxmi Venkateshwara Store Eashwarakatte "
+               ," NS General Store Ganjimatta Suralpady "," Manjunath General Store Kaikamba "," Sheeba Mutton & Chicken Stall ","DOWN TOWN SHAKTHINAGAR ",
+               " SLV Bakers & Cake Shakthinagara ","Tuttu Store Kulshekara Chowki "," Charvi Gen Store Kudupu ","4 Hotel Mathsya Sagar Kudupu "," Hotel Benaka Vamanjoor",
+               " Hotel Vigneshwara Near Checkpost ","Carmil Store Amruthnagara "," Shakthi Store Kulshekara Chowki "," Albam Store pachanady ","P. m stone pachanady ",
+               "Pachorady stone-parhanady "];
+
+function search(str) {
+	let results = [];
+	const val = str.toLowerCase();
+
+	for (i = 0; i < fruit.length; i++) {
+		if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results.push(fruit[i]);
+		}
+	}
+
+	return results;
+}
+
+function searchHandler(e) {
+	const inputVal = e.currentTarget.value;
+	let results = [];
+	if (inputVal.length > 0) {
+		results = search(inputVal);
+	}
+	showSuggestions(results, inputVal);
+}
+
+function showSuggestions(results, inputVal) {
+    
+    suggestions.innerHTML = '';
+
+	if (results.length > 0) {
+		for (i = 0; i < results.length; i++) {
+			let item = results[i];
+			// Highlights only the first match
+			// TODO: highlight all matches
+			const match = item.match(new RegExp(inputVal, 'i'));
+			item = item.replace(match[0], `<strong>${match[0]}</strong>`);
+			suggestions.innerHTML += `<li>${item}</li>`;
+		}
+		suggestions.classList.add('has-suggestions');
+	} else {
+		results = [];
+		suggestions.innerHTML = '';
+		suggestions.classList.remove('has-suggestions');
+	}
+}
+
+function useSuggestion(e) {
+	input.value = e.target.innerText;
+	input.focus();
+	suggestions.innerHTML = '';
+	suggestions.classList.remove('has-suggestions');
+}
+
+input.addEventListener('keyup', searchHandler);
+suggestions.addEventListener('click', useSuggestion);
+
+function add()
+{
+  var numOne ;
+var num=["Hoppala","Hot Hoppala","Panipuri papad with masala","Kasuri methi"];
+var sum=[22,24,30,20];
+  numOne = document.getElementById("fruit").value;
+for(var i=0;i<4;i++)
+{
+ if(numOne==num[i]){
+
+  document.getElementById("answer").innerHTML = num[i]+": "+sum[i];
+location.hash ="1";
+ system.exit(0);
+
+
+} else
+{
+document.getElementById("answer").innerHTML="";
+}
+}
+ 
+  
+
+  return "u";
+}
+var count=0;
+
+  var sum=0;
+  var count=1;  
+function myFunction1() {
+	
+var j=["a1","s1","f1","t1","s2","i1","n1","r1"];
+jk=["Hoppala","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
+  let x = document.getElementById("fruit"); 
+  for(i=0;i<10;i++){
+  if(x.value==j[i])
+  {
+  x.value=jk[i];
+}}
+  
+var b=document.getElementById("fruit").value
+if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
+{
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  cell1.innerHTML =b;
+cell2.innerHTML =document.getElementById("num").value
+
+count++;
+document.getElementById("fruit").value="";
+  sum+=parseInt(document.getElementById("num").value);
+document.getElementById("num").value="";
+  document.getElementById("fruit").value=""+count+".";
+  
+  document.getElementById("demo").innerHTML=sum;
+  document.getElementById("demo1").innerHTML=sum;
+}
+  if(count<15)
+  {
+  var h=""+count
+location.hash = h;
+}
+  return "u";
+}
+    
+
+</script>
+  </body>

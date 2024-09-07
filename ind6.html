@@ -87,21 +87,21 @@ input {
 const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 
-const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Shakthinagar ","Fathima Super Bazar Vamanjoor",
-               "Gupta Store Shakthinagar"," Kaveri General Store Kaikamba"," Mahaganapathi Store Vamanjoor"," Mammas Store Shakthinagar"
-               ," Nazaran Hotel Ulaibettu"," NS General Store Ganjimatta Suralpady"," Sagar Gen Store Vamanjoor"," SALWA SUPER BAZAR GANJIMATT",
-               " SATYA GEN STORE SHAKTHINAGAR"," SHAKTHINAGAR CANTEEN SHAKTHINAGAR"," Shri Amrutheshwara Store Kettikal","SANJEEVINI AYURVEDIC AND GENERAL STORES 
-               "," Madhura Bakery Kulshekar Dairy "," Pappas Fast Food Kulshekar Dairy ","Sadguru Sri Sai Store Shakthinagara ","SHAKTHINAGAR CANTEEN SHAKTHINAGAR "
+const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Shakthinagar ","Fathima Super Bazar Vamanjoor"
+               ,"Gupta Store Shakthinagar"," Kaveri General Store Kaikamba"," Mahaganapathi Store Vamanjoor"," Mammas Store Shakthinagar"
+               ," Nazaran Hotel Ulaibettu"," NS General Store Ganjimatta Suralpady"," Sagar Gen Store Vamanjoor"," SALWA SUPER BAZAR GANJIMATT"
+               ," SATYA GEN STORE SHAKTHINAGAR"," SHAKTHINAGAR CANTEEN SHAKTHINAGAR"," Shri Amrutheshwara Store Kettikal","SANJEEVINI AYURVEDIC AND GENERAL STORES" 
+               ," Madhura Bakery Kulshekar Dairy "," Pappas Fast Food Kulshekar Dairy ","Sadguru Sri Sai Store Shakthinagara ","SHAKTHINAGAR CANTEEN SHAKTHINAGAR "
                ,"Narayan Store Shakthinagara ","Maxi General Store Shakthinagar "," Shree Devi Fancy & Gen Store ","Gupta Store Shakthinagar "," Vinayaka Store Shakthinagar "
                ," RAJEEVA SALIAN STORE "," Rose General Store Kulshekar "," Kudla Kitchen Kulshekar [Savi] "," Gajanana Gen Store Kulshekar "," Shri Ganga Mini Mart Jyothinagar "
                ," Naveen Store Neermarga "," Lobo Gen Store Neermarga "," Om Sai Distributor Neermarga ","Durgambika Fast Food Neermarga "," Pork Stall Neermarga "
-               ," SOUZA GENERAL ST NEERMARGA ","Alwin General Store Vontemar ","Anna Mariya Gen Store Neermarga "," Yashoda Nilya Vamanjoor "," SNEHA SUPER BAZAR VAMANJOOR ",
-               " Sri Durga Store Moodshedde "," Sheddya St Moodshedde [Seguira] "," Vamnjoor Traders Vamanjoor ","JABBAR STORE ULAIBETTU "," Shree Kateel Fancy Kettikal ",
-               " Shekar Canteen Ulaibettu "," Nazaran Hotel Ulaibettu "," Kaikamba Mutton & Chicken Stall "," Gopal Canteen Kaje Padav","Laxmi Venkateshwara Store Eashwarakatte "
-               ," NS General Store Ganjimatta Suralpady "," Manjunath General Store Kaikamba "," Sheeba Mutton & Chicken Stall ","DOWN TOWN SHAKTHINAGAR ",
-               " SLV Bakers & Cake Shakthinagara ","Tuttu Store Kulshekara Chowki "," Charvi Gen Store Kudupu ","4 Hotel Mathsya Sagar Kudupu "," Hotel Benaka Vamanjoor",
-               " Hotel Vigneshwara Near Checkpost ","Carmil Store Amruthnagara "," Shakthi Store Kulshekara Chowki "," Albam Store pachanady ","P. m stone pachanady ",
-               "Pachorady stone-parhanady "];
+               ," SOUZA GENERAL ST NEERMARGA ","Alwin General Store Vontemar ","Anna Mariya Gen Store Neermarga "," Yashoda Nilya Vamanjoor "," SNEHA SUPER BAZAR VAMANJOOR "
+               ," Sri Durga Store Moodshedde "," Sheddya St Moodshedde [Seguira] "," Vamnjoor Traders Vamanjoor ","JABBAR STORE ULAIBETTU "," Shree Kateel Fancy Kettikal "
+               ," Shekar Canteen Ulaibettu "," Nazaran Hotel Ulaibettu "," Kaikamba Mutton & Chicken Stall "," Gopal Canteen Kaje Padav","Laxmi Venkateshwara Store Eashwarakatte "
+               ," NS General Store Ganjimatta Suralpady "," Manjunath General Store Kaikamba "," Sheeba Mutton & Chicken Stall ","DOWN TOWN SHAKTHINAGAR "
+               ," SLV Bakers & Cake Shakthinagara ","Tuttu Store Kulshekara Chowki "," Charvi Gen Store Kudupu "," Hotel Mathsya Sagar Kudupu "," Hotel Benaka Vamanjoor"
+               ," Hotel Vigneshwara Near Checkpost ","Carmil Store Amruthnagara "," Shakthi Store Kulshekara Chowki "," Albam Store pachanady ","P. m store pachanady "
+               ,"Pachorady stone-parhanady "];
 
 function search(str) {
 	let results = [];

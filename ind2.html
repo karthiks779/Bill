@@ -98,14 +98,19 @@ const fruit = [ 'yeyyadi store','I am shenoy store','Girinari chicken stall','sr
 
 function search(str) {
 	let results = [];
+	let results1 = [];
+	let results2 = [];
 	const val = str.toLowerCase();
 
 	for (i = 0; i < fruit.length; i++) {
-		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			results.push(fruit[i]);
+		if (fruit[i].toLowerCase().startsWith(val)) {
+			results1.push(fruit[i]);
+		}
+		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results2.push(fruit[i]);
 		}
 	}
-
+         results=results1.concat(results2);
 	return results;
 }
 

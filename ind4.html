@@ -95,19 +95,27 @@ const fruit = [ "JT Gen Store Bajal "," Annapoorneshwari Carteen Near Nethravath
                "Shri Vaidyanath Gen Store Madoor ","Sneha Super Bazar Ullal ","ST SEBASTAIN STORE THOKOTTU","Sulochana Store Madur"," Swagath Store Kuthar ",
                "Twisha Bazar Thokottu"," U.H.M General Store ","U.C.A General Store Jalligudde"," Naithangadi Store Krishnapura "," Rashmi Gen Store Yeyyadi ",
                " Mangalore Bazar Thokottu ","NITK CONSUMERS CO OPERATIVE SOCIETY "," SK Store Ullal "," Shahira Chicken & Mutton Stall Derebail Konchady ",
-               " Railway Canteen Someshwara "," BIG STORE SUPER BAZAR KALLAPU "," A.R.K Super Bazar Someshwara "," G M STORE ULLALA "," Fasil Store Kodi Ullala ",
-               " TD Store Ullala"];
+               " Railway Canteen Someshwara "," BIG STORE SUPER BAZAR KALLAPU "," A.R.K Super Bazar Someshwara "," G M STORE ULLALA ","Fasil Store Kodi Ullala ",
+               " TD Store Ullala","Bhagavathi Gen Store Yeyyadi ","Family Shop Padav "," S.R General Store Gorigudde "," KUDLA'S SUPER MARKET ","SAI RAM GEN STORE ALAPPE ",
+	       " Ashish General Store Karmar ","JMJ Store Jalligudde ","SAI GENERAL STORE JALLIGUDDE ","JOY STORE JALLI GUDDE "," Royee Store Bajal( Osworld) ","Devatha Store Kadthadka ",
+	       " Kallapu Super Bazar Kallapu ","Karavali Enterprises Thokottu ","SK Modkatta Kumpala ","Sri Kateel General Store Kumpala ","ADHITHI STORE KUMPALA ","GANESH GEN STORE KOLYA ",
+	       " Nandini Milk Parlcur Kolya ","Chow Me Hut Family Restaurant Adka ","Charmuri Stall Madoor ","Mamatha Mohandas Canteen Madoor ","Natekal Super Bazar "];
 
 function search(str) {
-	let results = [];
+	let results = [];	
+	let results1 = [];
+	let results2 = [];
 	const val = str.toLowerCase();
-
+      
 	for (i = 0; i < fruit.length; i++) {
-		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			results.push(fruit[i]);
+		if (fruit[i].toLowerCase().startsWith(val)) {
+      results1.push(fruit[i]);
+		}
+		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results2.push(fruit[i]);
 		}
 	}
-
+        results=results1.concat(results2);
 	return results;
 }
 

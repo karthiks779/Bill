@@ -109,7 +109,7 @@ function search(str) {
 
 	for (i = 0; i < fruit.length; i++) {
 		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			index=fruit[i].toLowerCase().index(val);
+			index=fruit[i].toLowerCase().indexOf(val);
 			results.push({fruit:fruit[i],index:index);
 		}
 		

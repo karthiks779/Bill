@@ -104,18 +104,19 @@ const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Sha
                ,"Pachorady stone-parhanady "];
 
 function search(str) {
-	let results = [];
-	const val = str.toLowerCase();
+  let results = [];
+  const val = str.toLowerCase();
 
-	for (i = 0; i < fruit.length; i++) {
-		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			index=fruit[i].toLowerCase().indexOf(val);
-			results.push({fruit:fruit[i],index:index);
-		}
-		
-	}
-        results.sort((a,b)=>a.index-b.index);
-	return results.map((result)=>result.fruit);
+  for (i = 0; i < fruit.length; i++) {
+    if (fruit[i].toLowerCase().includes(val)) {
+      const index = fruit[i].toLowerCase().indexOf(val);
+      results.push({ fruit: fruit[i], index: index });
+    }
+  }
+
+  results.sort((a, b) => a.index - b.index);
+
+  return results.map((result) => result.fruit);
 }
 
 function searchHandler(e) {

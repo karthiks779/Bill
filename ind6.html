@@ -109,11 +109,13 @@ function search(str) {
 
 	for (i = 0; i < fruit.length; i++) {
 		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			results.push(fruit[i]);
+			index=fruit[i].toLowerCase().index(val);
+			results.push({fruit:fruit[i],index:index);
 		}
+		
 	}
-
-	return results;
+        results.sort((a,b)=>a.index-b.index);
+	return results.map((result)=>result.fruit);
 }
 
 function searchHandler(e) {

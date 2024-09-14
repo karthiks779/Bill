@@ -100,16 +100,19 @@ const fruit = [ " Badriya St Jokatte( Elyas) ","Yadav Store Porkodi "," Shiva Sa
                " Sameer Store Bengre Kasba Sezma Store Kudroli"," Sez St Bengre"," Shri Lakshmi Gen Store Urva ","Swarna Megha Store Thannirbavi "];
 
 function search(str) {
-	let results = [];
-	const val = str.toLowerCase();
+  let results = [];
+  const val = str.toLowerCase();
 
-	for (i = 0; i < fruit.length; i++) {
-		if (fruit[i].toLowerCase().indexOf(val) > -1) {
-			results.push(fruit[i]);
-		}
-	}
+  for (i = 0; i < fruit.length; i++) {
+    if (fruit[i].toLowerCase().includes(val)) {
+      const index = fruit[i].toLowerCase().indexOf(val);
+      results.push({ fruit: fruit[i], index: index });
+    }
+  }
 
-	return results;
+  results.sort((a, b) => a.index - b.index);
+
+  return results.map((result) => result.fruit);
 }
 
 function searchHandler(e) {

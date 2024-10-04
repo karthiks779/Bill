@@ -24,11 +24,12 @@
           <option value="Safari"></option> 
           </datalist> 
           <button type="button" onclick="storeAmount()">Store Amount</button> 
-          <button type="button" onclick="resetStorage()">Reset Storage</button> 
+          
           <p id="totalAmount"></p> 
           <table id="myTable">
                <tbody> <!-- Rows will be dynamically generated --> </tbody> 
                </table> 
+               <button type="button" onclick="resetStorage()">Reset Storage</button> 
                <script> var sum = 0; // Generate 100 rows dynamically 
                var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
                for (var i = 0; i < 100; i++) 

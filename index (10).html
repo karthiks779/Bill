@@ -1,0 +1,92 @@
+
+<!DOCTYPE html> 
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Customer Amount Tracker</title> 
+          <style> 
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+          <label for="browser">Customer name:</label> 
+          <input list="browsers" name="browser" id="browser"> 
+          <input type="text" name="a" id="a"> 
+          <label for="num">Amount:</label>
+          <input style="font-size:20px" type="number" name="num" id="num"> 
+          <datalist id="browsers"> 
+          <option value="micro"></option>
+          <option value="Firefox"></option> 
+          <option value="Chrome"></option> 
+          <option value="Opera"></option> 
+          <option value="Safari"></option> 
+          </datalist> 
+          <button type="button" onclick="storeAmount()">Store Amount</button> 
+          <button type="button" onclick="resetStorage()">Reset Storage</button> 
+          <p id="totalAmount"></p> 
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+               <script> var sum = 0; // Generate 100 rows dynamically 
+               var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+               for (var i = 0; i < 100; i++) 
+               { var row = tableBody.insertRow(); 
+               var cell1 = row.insertCell(0);
+               var cell2 = row.insertCell(1); 
+               cell1.textContent = localStorage.getItem("gh-1"+i);
+               cell2.textContent = localStorage.getItem("gh" + i) || 0; // Default to 0 if not set 
+               } // Store amount in localStorage 
+               count=0;
+                              
+
+               function storeAmount() 
+               
+               {                    count=localStorage.getItem("p"); 
+                   
+                   var c=document.getElementById("browser").value;
+                   var a = document.getElementById("a").value; 
+               var b = document.getElementById("num").value; 
+               
+               if (a < 0 || a >= 100) { alert("Please enter a valid row number between 0 and 99.");
+               return; } 
+               localStorage.setItem("gh-1"+a,c) 
+               localStorage.setItem("gh" + a, b); 
+               count++; 
+               document.getElementById("myTable").rows[a].cells[0].textContent = 
+               localStorage.getItem("gh-1" + a); 
+               // Calculate total
+            
+               document.getElementById("myTable").rows[a].cells[1].textContent = 
+               localStorage.getItem("gh" + a); 
+               // Calculate total
+               
+               sum = 0; // Reset sum 
+               for (var i = 0; i < 100; i++) 
+               { sum +=parseInt(localStorage.getItem("gh" + i)); }
+               localStorage.setItem("m", sum);
+               
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m"); 
+               localStorage.setItem("p", count);
+               document.getElementById("a").value=localStorage.getItem("p"); 
+               }
+               document.getElementById("a").value=localStorage.getItem("p"); 
+         
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m");  
+               // Reset localStorage and UI 
+               function resetStorage() 
+               { for (var i = 0; i < 100; i++) 
+               { localStorage.setItem("gh" + i, 0);
+               document.getElementById("myTable").rows[i].cells[1].textContent = 0;  
+               localStorage.setItem("gh-1" + i, "");
+               document.getElementById("myTable").rows[i].cells[0].textContent = ""; } 
+          localStorage.setItem("p",0); 
+         
+               localStorage.setItem("m", 1);
+               document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; } 
+               </script> 
+               </body>
+               </html>

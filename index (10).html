@@ -45,7 +45,8 @@
                function storeAmount() 
                
                {                    count=localStorage.getItem("p"); 
-                   
+                   if(document.getElementById("num").value!="" || document.getElementById("browser").value!="")
+                   {
                    var c=document.getElementById("browser").value;
                    var a = document.getElementById("a").value; 
                var b = document.getElementById("num").value; 
@@ -72,7 +73,11 @@
                localStorage.getItem("m"); 
                localStorage.setItem("p", count);
                document.getElementById("a").value=localStorage.getItem("p"); 
+
+                document.getElementById("num").value="";
+                document.getElementById("browser").value=""; 
                }
+                    }
                document.getElementById("a").value=localStorage.getItem("p"); 
          
                document.getElementById("totalAmount").innerHTML = "Total Amount: " +

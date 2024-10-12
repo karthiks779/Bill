@@ -1,118 +1,263 @@
-<html><head>
+
+<!DOCTYPE html> 
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Customer Amount Tracker</title> 
+         <div class="search-container">
+	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction1()">
+	<div class="suggestions">
+		<ul></ul>
+	</div>
+</div>
 <style>
+
 table,td{
   border: 1px solid black;
-}
-option {
   font-size: 30px;
 }
-</style>
 
-</head>
-<body onbeforeunload="return myFunction()">
+input {
+  border: 0 none;
+}
 
-<label for="browser">Customer name :</label>
-<input list="browsers" name="browser" id="browser" onkeyup="myFunction()">
-<label for="num">Amount:</label>
-<input style="font-size:20px" type="number" name="num" id="num">
+.search-container {
+  width: 400px;
+  position: relative;
+  margin: 15px auto;
+}
+.search-container input,
+.search-container .suggestions {
+  width: 100%;
+  background: #fff;
+  text-align: left;
+}
+.search-container input {
+  background: rgba(255, 255, 255, 0.2);
+  height: 60px;
+  padding: 0 10px;
+}
+.search-container .suggestions {
+  position: absolute;
+  top: 60px;
+}
 
-<datalist id="browsers">
-  <option value="micro">
-  </option><option value="Firefox">
-  </option><option value="Chrome">
-  </option><option value="Opera">
-  </option><option value="Safari">
-</option></datalist>
-<button type="button" onclick="myFunction()">Try it</button>
-<p id="demo"></p>
-<table style="margin-top:-1rem; font-size:30px" id="myTable">
-  <tbody><tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
-</tbody></table>
-<br>
+ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+}
+ul.has-suggestions {
+  display: block;
+}
+ul li {
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+}
+ul li:hover {
+  background-color: #e65c00;
+}
 
-<button type="button" onclick="myFunction()">Try it</button>
-<button onclick="window.print()">Print this page</button>
- <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="page.html">Download</a>
+input {
+  border-bottom: 2px solid #e65c00;
+}
 
+          
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+       
 
-<script>
-  var sum=0;
-  var count=1;
-function myFunction() {  
- var j={M1:"mangaladevi gen store",A1:"A1 podi stall"
-        ,S1:"s.s mini mart",P1:"p.s traders",P2:"Pinku's hut"
-        ,B1:"Bismilla bazar",B2:"Bhat store"
-        ,N1:"New vijay sweets",C5:"Chicken stall farangipete",N1:"N A store"
-        ,C1:"charmuri stall"
-        ,F1:"F1 vegetable",F4:"Food adda"
-       ,A3:"Angalore store",A4:"Athiti Hotel"
-       ,C2:"chirag hotel"
-       ,J1:"jayaraj store",D1:"durga ganesh gen store"
-           ,V1:"vijay sweets",H1:"Hilltop hotel",J1:"Jayanagar store",L1:"Lakshmi vilas"
-       ,K1:"Kalladka super bazar",L2:"Lakshmi store"
-       ,A2:"hotel ashok",C3:"chick form",
-       F2:"Fathima store",C4:"Chicken halal",F3:"Fish tava"
-      ,B3:"basaveshwara podi corner",D2:"deepee store",D3:"D Souza store"
-        ,G1:"hotel garodi",E1:"hotel Eshanya"
-    };
-let x = document.getElementById("browser");
-for(i in j)
+          <label for="num">Amount:</label>
+          <input style="font-size:20px" type="number" name="num" id="num"> 
+       
+          <button type="button" onclick="storeAmount()">Store Amount</button> 
+                   <input type="hidden" name="a" id="a"> 
+      <p id="totalAmount"></p> 
+            <input type="text" id="kl44">
+<button type="button" onclick="myFunction44()">Insert option</button>
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
+                 <p id="n44">g</p>
+
+               <script>
+               j44=[];
+               
+for(i44=0;i44<=localStorage.getItem("m44");i44++)
 {
-    if(x.value==i)
-    {
-        x.value=j[i];
-    }
+j44.push(localStorage.getItem("n44"+i44));
 }
-var b=document.getElementById("browser").value
-if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
+document.getElementById("n44").innerHTML=j44; 
+
+               const input = document.querySelector('#fruit');
+const suggestions = document.querySelector('.suggestions ul');
+
+const fruit = [ "","Badriya St Jokatte( Elyas) ","Yadav Store Porkodi "," Shiva Sagar Veg Canteen Kottara ",
+               " Arnav Restaurant Kottara"," Sezma Store Kudroli "," Liberty Central Market "," Easy Foods & Agencies Bunder "
+               ,"Kakkadath Traders Bunder ","Saleem St Bunder "," Gurukripa Store Barke "," DURGAMBIKA STORE KOTTARA "," Janapriya Traders Mannagudda "
+               ," Hotel Ashwini Porkodi ","Nisha bine Jokatte ","Shravya Store Kottara ","SKJ Flower and Fruits Veg Kodikal "," Sheeba Mutton & Chicken Stall ",
+               " Nature Basket"," NERAL STORE BENGRE"," s Bunder KUDROLI"," AZAR BENGRE ","BENGARE KASBA "," Bunder Cental market","Asraf Store Kudroli ",
+               " Central Market "," hooba Mutton & Chicken Stall ","S K J Flower and Fruits Veg Kodikal "," Shravya Store Kottara"," Nisha Dine Jokatte "
+               ," hotel Ashwini Porkodi "," Japriya Traders Mannagudda "," DURGAMBIKA STORE KOTTARA "," kripa Store Barke "," Saleem St Bunder ",
+               " kakkaddath Traders Bunder "," bds & Agencies Bunder "," Aahnas Nature Basket"," AMMA GENERAL STORE BENGRE"," ASHRAF KUDROLI"," Asiya Traders Bunder",
+               " DMS Mart Kodikal"," Easy Foods & Agencies Bunder"," HR General Store Bengre"," Kakkadath Traders Bunder"," KARAVALI STORE BENGARE KASBA"," KASBA SUPER BAZAR BENGRE"
+               ," Kukkadi Brothers N.M.P.T"," Liberty Central Market"," Mogaveera Canteen Bengre"," M.S General Store Bengere"," N.H General Store Bengre"," RJ Store Bengre"," Saleem St Bunder",
+               " Sameer Store Bengre Kasba","Sezma Store Kudroli","Sez St Bengre"," Shri Lakshmi Gen Store Urva ","Swarna Megha Store Thannirbavi "];
+for(d=1;d<j44.length;d++)
 {
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  count++;
-if((document.getElementById("browser").value)=="micro"|| (document.getElementById("browser").value)=="." )
-{
-  cell1.innerHTML =count-1;
-cell2.innerHTML =document.getElementById("num").value
+fruit.push(j44[d])
 }
-else
-{
-  cell1.innerHTML = document.getElementById("browser").value
-  cell2.innerHTML =document.getElementById("num").value
+
+function search(str) {
+	let results = [];	
+	let results1 = [];
+	let results2 = [];
+	const val = str.toLowerCase();
+      
+	for (i = 0; i < fruit.length; i++) {
+		if (fruit[i].toLowerCase().startsWith(val)) {
+      results1.push(fruit[i]);
+		}
+		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results2.push(fruit[i]);
+		}
+	}
+        results=results1.concat(results2);
+       
+	return results;
+	
 }
-document.getElementById("browser").value="";
-  sum+=parseInt(document.getElementById("num").value);
-document.getElementById("num").value="";
-  document.getElementById("browser").value=""+count+".";
-  
-  document.getElementById("demo").innerHTML=sum;
-  document.getElementById("demo1").innerHTML=sum;
+
+function searchHandler(e) {
+	const inputVal = e.currentTarget.value;
+	let results = [];
+	if (inputVal.length > 0) {
+		results = search(inputVal);
+	}
+	showSuggestions(results, inputVal);
 }
-  if(count<15)
-  {
-  var h=""+count
-location.hash = h;
-}
-  return "u";
-}
+
+function showSuggestions(results, inputVal) {
     
-</script>
+    suggestions.innerHTML = '';
 
-  <p style="margin-left:20rem; font-size:100px" id="demo1"></p>
+	if (results.length > 0) {
+		for (i = 0; i < results.length; i++) {
+			let item = results[i];
+			// Highlights only the first match
+			// TODO: highlight all matches
+			const match = item.match(new RegExp(inputVal, 'i'));
+			item = item.replace(match[0], `<strong>${match[0]}</strong>`);
+			suggestions.innerHTML += `<li>${item}</li>`;
+		}
+		suggestions.classList.add('has-suggestions');
+	} else {
+		results = [];
+		suggestions.innerHTML = '';
+		suggestions.classList.remove('has-suggestions');
+	}
+}
+
+function useSuggestion(e) {
+	input.value = e.target.innerText;
+	input.focus();
+	suggestions.innerHTML = '';
+	suggestions.classList.remove('has-suggestions');
+}
+
+input.addEventListener('keyup', searchHandler);
+suggestions.addEventListener('click', useSuggestion);
+var sum = 0; // Generate 100 rows dynamically 
+               var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+               for (var i = 0; i < 100; i++) 
+               { var row = tableBody.insertRow(); 
+               var cell1 = row.insertCell(0);
+               var cell2 = row.insertCell(1); 
+               cell1.textContent = localStorage.getItem("gh-1"+i);
+               cell2.textContent = localStorage.getItem("gh" + i) || 0; // Default to 0 if not set 
+               } // Store amount in localStorage 
+               count=0;
+                              
+
+               function storeAmount() 
+               
+               {                    count=localStorage.getItem("p"); 
+                   if(document.getElementById("num").value!=""  && document.getElementById("fruit").value!="" )
+                   {
+                  var c=document.getElementById("fruit").value;
+                   var a = document.getElementById("a").value; 
+               var b = document.getElementById("num").value; 
+               
+               if (a < 0 || a >= 100) { alert("Please enter a valid row number between 0 and 99.");
+               return; } 
+               localStorage.setItem("gh-1"+a,c) 
+               localStorage.setItem("gh" + a, b); 
+               count++; 
+               document.getElementById("myTable").rows[a].cells[0].textContent = 
+               localStorage.getItem("gh-1" + a); 
+               // Calculate total
+            
+               document.getElementById("myTable").rows[a].cells[1].textContent = 
+               localStorage.getItem("gh" + a); 
+               // Calculate total
+               
+               sum = 0; // Reset sum 
+               for (var i = 0; i < 100; i++) 
+               { sum +=parseInt(localStorage.getItem("gh" + i)); }
+               localStorage.setItem("m", sum);
+               
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m"); 
+               localStorage.setItem("p", count);
+               document.getElementById("a").value=localStorage.getItem("p"); 
+               document.getElementById("fruit").value="";
+               document.getElementById("num").value="";
+			   tableBody.rows[a].cells[0].scrollIntoView(); 
+               }
+               }
+               document.getElementById("a").value=localStorage.getItem("p"); 
+         
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m");  
+               // Reset localStorage and UI 
+               function resetStorage() 
+               { for (var i = 0; i < 100; i++) 
+               { localStorage.setItem("gh" + i, 0);
+               document.getElementById("myTable").rows[i].cells[1].textContent = 0;  
+               localStorage.setItem("gh-1" + i, "");
+               document.getElementById("myTable").rows[i].cells[0].textContent = ""; } 
+          localStorage.setItem("p",0); 
+         
+               localStorage.setItem("m", 1);
+               document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; }
+                 function myFunction44() {
+  
+ count44=localStorage.getItem("m44");
+ if((document.getElementById("kl44").value)!="")
+ {
+ count44++; 
+ 
+ localStorage.setItem("n44"+count44,document.getElementById("kl44").value) 
+  
+
+localStorage.setItem("m44",count44) 
+}
+document.getElementById("kl44").value=""; 
+}
 
 
 
-
-</body></html>
+ fruit=j44+fruit; 
+               </script> 
+               </body>
+  </html>

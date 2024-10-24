@@ -1,4 +1,11 @@
-<div class="search-container">
+
+<!DOCTYPE html> 
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Customer Amount Tracker</title> 
+         <div class="search-container">
 	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction1()">
 	<div class="suggestions">
 		<ul></ul>
@@ -8,8 +15,6 @@
 
 table,td{
   border: 1px solid black;
-}
-option {
   font-size: 30px;
 }
 
@@ -62,32 +67,42 @@ ul li:hover {
 input {
   border-bottom: 2px solid #e65c00;
 }
-</style>
-<body onbeforeunload="return myFunction1()">
-<input type="number" id="num">
-<button onclick="add()">Click</button>
-<button onclick="myFunction1()">Click</button>
-<p id="answer"></p>
-<table style="margin-top:-1rem; font-size:30px" id="myTable">
-  <tbody><tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
-</tbody></table>
-<p style="margin:1rem 15rem; font-size:200px" id="demo"></p>
-<script>
-const input = document.querySelector('#fruit');
+
+          
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+       
+
+          <label for="num">Amount:</label>
+          <input style="font-size:20px" type="number" name="num" id="num"> 
+       
+          <button type="button" onclick="storeAmount()">Store Amount</button> 
+                   <input type="hidden" name="a" id="a"> 
+      <p id="totalAmount"></p> 
+            <input type="text" tabindex="-1" id="kl44">
+<button type="button" onclick="myFunction44()">Insert option</button>
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
+                 <p id="n44">g</p>
+
+               <script>
+               j44=[];
+               
+for(i44=0;i44<=localStorage.getItem("m44");i44++)
+{
+j44.push(localStorage.getItem("n44"+i44));
+}
+document.getElementById("n44").innerHTML=j44; 
+
+               const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 
-const fruit = [ "Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 Chinese food","hotel anchan","Amuruteshwara store",
+const fruit = [ "","Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 Chinese food","hotel anchan","Amuruteshwara store",
        "baikampady store","Baikampady bazar","bramha lingeshwara","bright store","badriya store","Hotel black pearl",
        "Chelluru","chowta store","charvi store",
         "Durga parameshwari",
@@ -102,24 +117,29 @@ const fruit = [ "Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 C
        "Sri sai sundar",
        "hotel varshita","Vinayaka store",
        "Welcome super bazar"];
+for(d=1;d<j44.length;d++)
+{
+fruit.push(j44[d])
+}
 
 function search(str) {
-	let results = [];
+	let results = [];	
 	let results1 = [];
 	let results2 = [];
 	const val = str.toLowerCase();
-
+      
 	for (i = 0; i < fruit.length; i++) {
-		 if(fruit[i].toLowerCase().startsWith(val)) {
+		if (fruit[i].toLowerCase().startsWith(val)) {
       results1.push(fruit[i]);
 		}
 		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
 			results2.push(fruit[i]);
 		}
-		
 	}
-         results=results1.concat(results2);
+        results=results1.concat(results2);
+       
 	return results;
+	
 }
 
 function searchHandler(e) {
@@ -161,74 +181,87 @@ function useSuggestion(e) {
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
+var sum = 0; // Generate 100 rows dynamically 
+               var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+               for (var i = 0; i < 100; i++) 
+               { var row = tableBody.insertRow(); 
+               var cell1 = row.insertCell(0);
+               var cell2 = row.insertCell(1); 
+               cell1.textContent = localStorage.getItem("gh-1"+i);
+               cell2.textContent = localStorage.getItem("gh" + i) || 0; // Default to 0 if not set 
+               } // Store amount in localStorage 
+               count=0;
+                              
 
-function add()
-{
-  var numOne ;
-var num=["Hoppala","Hot Hoppala","Panipuri papad with masala","Kasuri methi"];
-var sum=[22,24,30,20];
-  numOne = document.getElementById("fruit").value;
-for(var i=0;i<4;i++)
-{
- if(numOne==num[i]){
-
-  document.getElementById("answer").innerHTML = num[i]+": "+sum[i];
-location.hash ="1";
- system.exit(0);
-
-
-} else
-{
-document.getElementById("answer").innerHTML="";
-}
-}
+               function storeAmount() 
+               
+               {                    count=localStorage.getItem("p"); 
+                   if(document.getElementById("num").value!=""  && document.getElementById("fruit").value!="" )
+                   {
+                  var c=document.getElementById("fruit").value;
+                   var a = document.getElementById("a").value; 
+               var b = document.getElementById("num").value; 
+               
+               if (a < 0 || a >= 100) { alert("Please enter a valid row number between 0 and 99.");
+               return; } 
+               localStorage.setItem("gh-1"+a,c) 
+               localStorage.setItem("gh" + a, b); 
+               count++; 
+               document.getElementById("myTable").rows[a].cells[0].textContent = 
+               localStorage.getItem("gh-1" + a); 
+               // Calculate total
+            
+               document.getElementById("myTable").rows[a].cells[1].textContent = 
+               localStorage.getItem("gh" + a); 
+               // Calculate total
+               
+               sum = 0; // Reset sum 
+               for (var i = 0; i < 100; i++) 
+               { sum +=parseInt(localStorage.getItem("gh" + i)); }
+               localStorage.setItem("m", sum);
+               
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m"); 
+               localStorage.setItem("p", count);
+               document.getElementById("a").value=localStorage.getItem("p"); 
+               document.getElementById("fruit").value="";
+               document.getElementById("num").value="";
+			   tableBody.rows[a].cells[0].scrollIntoView(); 
+               }
+               }
+               document.getElementById("a").value=localStorage.getItem("p"); 
+         
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m");  
+               // Reset localStorage and UI 
+               function resetStorage() 
+               { for (var i = 0; i < 100; i++) 
+               { localStorage.setItem("gh" + i, 0);
+               document.getElementById("myTable").rows[i].cells[1].textContent = 0;  
+               localStorage.setItem("gh-1" + i, "");
+               document.getElementById("myTable").rows[i].cells[0].textContent = ""; } 
+          localStorage.setItem("p",0); 
+         
+               localStorage.setItem("m", 1);
+               document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; }
+                 function myFunction44() {
+  
+ count44=localStorage.getItem("m44");
+ if((document.getElementById("kl44").value)!="")
+ {
+ count44++; 
  
+ localStorage.setItem("n44"+count44,document.getElementById("kl44").value) 
   
 
-  
+localStorage.setItem("m44",count44) 
 }
-var count=0;
+document.getElementById("kl44").value=""; 
+}
 
-  var sum=0;
-  var count=1;  
-function myFunction1() {
-	
-var j=["a1","s1","f1","t1","s2","i1","n1","r1"];
-jk=["Hoppala","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
-  let x = document.getElementById("fruit"); 
-  for(i=0;i<10;i++){
-  if(x.value==j[i])
-  {
-  x.value=jk[i];
-}}
-  
-var b=document.getElementById("fruit").value
-if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
-{
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML =b;
-cell2.innerHTML =document.getElementById("num").value
 
-count++;
-document.getElementById("fruit").value="";
-  sum+=parseInt(document.getElementById("num").value);
-document.getElementById("num").value="";
-  document.getElementById("fruit").value=""+count+".";
-  
-  document.getElementById("demo").innerHTML=sum;
-  document.getElementById("demo1").innerHTML=sum;
-}
-  if(count<15)
-  {
-  var h=""+count
-location.hash = h;
-}
-  return "u";
-}
-    
 
-</script>
-</body>
+ fruit=j44+fruit; 
+               </script> 
+               </body>
+</html>

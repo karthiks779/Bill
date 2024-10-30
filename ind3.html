@@ -89,20 +89,22 @@ input {
                </table> 
                          <button type="button" onclick="resetStorage()">Reset Storage</button> 
                  <p id="n44">g</p>
+        <p id="collectedData" >       </p>
 
+
+    
+messagesRef.remove()
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+   
                <script>
                j44=[];
                
-for(i44=0;i44<=localStorage.getItem("m44");i44++)
-{
-j44.push(localStorage.getItem("n44"+i44));
-}
-document.getElementById("n44").innerHTML=j44; 
+
 
                const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 
-const fruit = [ "","Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 Chinese food","hotel anchan","Amuruteshwara store",
+const fruit = ["Attavara canteen","Al amin samosa","St anna","Annapoorna","A1 Chinese food","hotel anchan","Amuruteshwara store",
        "baikampady store","Baikampady bazar","bramha lingeshwara","bright store","badriya store","Hotel black pearl",
        "Chelluru","chowta store","charvi store",
         "Durga parameshwari",
@@ -117,10 +119,27 @@ const fruit = [ "","Attavara canteen","Al amin samosa","St anna","Annapoorna","A
        "Sri sai sundar",
        "hotel varshita","Vinayaka store",
        "Welcome super bazar"];
-for(d=1;d<j44.length;d++)
+        function displayMessages() {
+            // Clear the displayed data first
+           // document.getElementById('collectedData').innerHTML = '';
+
+            // Iterate through the messageArray to display each message
+            
+            // Display the messageArray in a formatted way
+          
+            l=messageArray.map(msg => ` ${msg.name}`);
+         
+        
+     document.getElementById("collectedData").innerHTML =l[(l.length)-1] 
+
+for(d=0;d<l.length;d++)
 {
-fruit.push(j44[d])
+fruit.push(l[d])
 }
+document.getElementById("n44").innerHTML=l; 
+
+            
+        }
 
 function search(str) {
 	let results = [];	
@@ -246,22 +265,88 @@ var sum = 0; // Generate 100 rows dynamically
                document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; }
                  function myFunction44() {
   
- count44=localStorage.getItem("m44");
+ 
  if((document.getElementById("kl44").value)!="")
  {
- count44++; 
  
- localStorage.setItem("n44"+count44,document.getElementById("kl44").value) 
-  
+            
+            let email=Date();
+    let name=document.getElementById("kl44").value;
+            // Save message
+            saveMessage(name, email);
+            
+        
 
-localStorage.setItem("m44",count44) 
+
+        
+        // Save message to Firebase
+        function saveMessage(name, email) {
+            let newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                email: email,
+            }).then(() => {
+                // Add the new message to the array
+                messageArray.push({ name, email });
+                // Call the function to display data after saving
+                
+            });
+        }
+
+
 }
 document.getElementById("kl44").value=""; 
 }
 
 
+    
+    
 
- fruit=j44+fruit; 
+
+    
+        
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCx2K_Ji0mRflPnbxmqbVWv24O_sueerAg",
+            authDomain: "kk44-81f8e.firebaseapp.com",
+            databaseURL: "https://kk44-81f8e-default-rtdb.firebaseio.com",
+            projectId: "kk44-81f8e",
+            storageBucket: "kk44-81f8e.appspot.com",
+            messagingSenderId: "720386428137",
+            appId: "1:720386428137:web:946d8d62172c02557a3478",
+            measurementId: "G-WZY3Q18VFX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to messages collection
+        let messagesRef = firebase.database().ref('New3');
+
+        // Global array to hold messages
+        let messageArray = [];
+
+        // Form submission
+             
+            
+
+
+
+        // Function to retrieve and display data
+      
+        // Call to fetch existing messages from Firebase and populate the array
+        messagesRef.once('value', (snapshot) => {
+            snapshot.forEach(childSnapshot => {
+                let message = childSnapshot.val();
+                messageArray.push(message);
+            });
+            // Display existing messages
+            displayMessages();
+        });
+
+
+ 
                </script> 
                </body>
 </html>

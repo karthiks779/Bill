@@ -1,4 +1,11 @@
-<div class="search-container">
+
+<!DOCTYPE html> 
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Customer Amount Tracker</title> 
+         <div class="search-container">
 	<input type="text" name="fruit" id="fruit" placeholder="Search fruit 🍎" onkeyup="myFunction1()">
 	<div class="suggestions">
 		<ul></ul>
@@ -8,8 +15,6 @@
 
 table,td{
   border: 1px solid black;
-}
-option {
   font-size: 30px;
 }
 
@@ -62,32 +67,44 @@ ul li:hover {
 input {
   border-bottom: 2px solid #e65c00;
 }
-</style>
-<body onbeforeunload="return myFunction1()">
-<input type="number" id="num">
-<button onclick="add()">Click</button>
-<button onclick="myFunction1()">Click</button>
-<p id="answer"></p>
-<table style="margin-top:-1rem; font-size:30px" id="myTable">
-  <tbody><tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
-</tbody></table>
-<p style="margin:1rem 15rem; font-size:200px" id="demo"></p>
-<script>
-const input = document.querySelector('#fruit');
+
+          
+          table, td { border: 1px solid black; }
+          option { font-size: 30px; } 
+          </style>
+          </head> 
+          <body> 
+       
+
+          <label for="num">Amount:</label>
+          <input style="font-size:20px" type="number" name="num" id="num"> 
+       
+          <button type="button" onclick="storeAmount()">Store Amount</button> 
+                   <input type="hidden" name="a" id="a"> 
+      <p id="totalAmount"></p> 
+            <input type="text" tabindex="-1" id="kl44">
+<button type="button" onclick="myFunction44()">Insert option</button>
+          <table id="myTable">
+               <tbody> <!-- Rows will be dynamically generated --> </tbody> 
+               </table> 
+                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
+                 <p id="n44">g</p>
+        <p id="collectedData" >       </p>
+
+
+    
+messagesRef.remove()
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+   
+               <script>
+               j44=[];
+               
+
+
+               const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 
-const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Shakthinagar ","Fathima Super Bazar Vamanjoor"
+const fruit =[ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Shakthinagar ","Fathima Super Bazar Vamanjoor"
                ,"Gupta Store Shakthinagar"," Kaveri General Store Kaikamba"," Mahaganapathi Store Vamanjoor"," Mammas Store Shakthinagar"
                ," Nazaran Hotel Ulaibettu"," NS General Store Ganjimatta Suralpady"," Sagar Gen Store Vamanjoor"," SALWA SUPER BAZAR GANJIMATT"
                ," SATYA GEN STORE SHAKTHINAGAR"," SHAKTHINAGAR CANTEEN SHAKTHINAGAR"," Shri Amrutheshwara Store Kettikal","SANJEEVINI AYURVEDIC AND GENERAL STORES" 
@@ -102,21 +119,47 @@ const fruit = [ " Shakthinagar Group Summary"," Baji Store"," D'Silva Bakery Sha
                ," SLV Bakers & Cake Shakthinagara ","Tuttu Store Kulshekara Chowki "," Charvi Gen Store Kudupu "," Hotel Mathsya Sagar Kudupu "," Hotel Benaka Vamanjoor"
                ," Hotel Vigneshwara Near Checkpost ","Carmil Store Amruthnagara "," Shakthi Store Kulshekara Chowki "," Albam Store pachanady ","P. m store pachanady "
                ,"Pachorady stone-parhanady "];
+    l=[];
+        function displayMessages() {
+            // Clear the displayed data first
+           // document.getElementById('collectedData').innerHTML = '';
+
+            // Iterate through the messageArray to display each message
+            
+            // Display the messageArray in a formatted way
+          
+            l=messageArray.map(msg => ` ${msg.name}`);
+         
+        
+     document.getElementById("collectedData").innerHTML =l[(l.length)-1] 
+
+for(d=0;d<l.length;d++)
+{
+fruit.push(l[d])
+}
+document.getElementById("n44").innerHTML=l; 
+
+            
+        }
 
 function search(str) {
-  let results = [];
-  const val = str.toLowerCase();
-
-  for (i = 0; i < fruit.length; i++) {
-    if (fruit[i].toLowerCase().includes(val)) {
-      const index = fruit[i].toLowerCase().indexOf(val);
-      results.push({ fruit: fruit[i], index: index });
-    }
-  }
-
-  results.sort((a, b) => a.index - b.index);
-
-  return results.map((result) => result.fruit);
+	let results = [];	
+	let results1 = [];
+	let results2 = [];
+	const val = str.toLowerCase();
+      
+	for (i = 0; i < fruit.length; i++) {
+		if (fruit[i].toLowerCase().startsWith(val)) {
+      results1.push(fruit[i]);
+		}
+		else if (fruit[i].toLowerCase().indexOf(val) > -1) {
+			results2.push(fruit[i]);
+		}
+	}
+        results=results1.concat(results2);
+       
+	return results;
+	
 }
 
 function searchHandler(e) {
@@ -158,74 +201,153 @@ function useSuggestion(e) {
 
 input.addEventListener('keyup', searchHandler);
 suggestions.addEventListener('click', useSuggestion);
+var sum = 0; // Generate 100 rows dynamically 
+               var tableBody = document.getElementById("myTable").getElementsByTagName('tbody')[0];
+               for (var i = 0; i < 100; i++) 
+               { var row = tableBody.insertRow(); 
+               var cell1 = row.insertCell(0);
+               var cell2 = row.insertCell(1); 
+               cell1.textContent = localStorage.getItem("gh-1"+i);
+               cell2.textContent = localStorage.getItem("gh" + i) || 0; // Default to 0 if not set 
+               } // Store amount in localStorage 
+               count=0;
+                              
 
-function add()
-{
-  var numOne ;
-var num=["Hoppala","Hot Hoppala","Panipuri papad with masala","Kasuri methi"];
-var sum=[22,24,30,20];
-  numOne = document.getElementById("fruit").value;
-for(var i=0;i<4;i++)
-{
- if(numOne==num[i]){
-
-  document.getElementById("answer").innerHTML = num[i]+": "+sum[i];
-location.hash ="1";
- system.exit(0);
-
-
-} else
-{
-document.getElementById("answer").innerHTML="";
-}
-}
+               function storeAmount() 
+               
+               {                    count=localStorage.getItem("p"); 
+                   if(document.getElementById("num").value!=""  && document.getElementById("fruit").value!="" )
+                   {
+                  var c=document.getElementById("fruit").value;
+                   var a = document.getElementById("a").value; 
+               var b = document.getElementById("num").value; 
+               
+               if (a < 0 || a >= 100) { alert("Please enter a valid row number between 0 and 99.");
+               return; } 
+               localStorage.setItem("gh-1"+a,c) 
+               localStorage.setItem("gh" + a, b); 
+               count++; 
+               document.getElementById("myTable").rows[a].cells[0].textContent = 
+               localStorage.getItem("gh-1" + a); 
+               // Calculate total
+            
+               document.getElementById("myTable").rows[a].cells[1].textContent = 
+               localStorage.getItem("gh" + a); 
+               // Calculate total
+               
+               sum = 0; // Reset sum 
+               for (var i = 0; i < 100; i++) 
+               { sum +=parseInt(localStorage.getItem("gh" + i)); }
+               localStorage.setItem("m", sum);
+               
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m"); 
+               localStorage.setItem("p", count);
+               document.getElementById("a").value=localStorage.getItem("p"); 
+               document.getElementById("fruit").value="";
+               document.getElementById("num").value="";
+			   tableBody.rows[a].cells[0].scrollIntoView(); 
+               }
+               }
+               document.getElementById("a").value=localStorage.getItem("p"); 
+         
+               document.getElementById("totalAmount").innerHTML = "Total Amount: " +
+               localStorage.getItem("m");  
+               // Reset localStorage and UI 
+               function resetStorage() 
+               { for (var i = 0; i < 100; i++) 
+               { localStorage.setItem("gh" + i, 0);
+               document.getElementById("myTable").rows[i].cells[1].textContent = 0;  
+               localStorage.setItem("gh-1" + i, "");
+               document.getElementById("myTable").rows[i].cells[0].textContent = ""; } 
+          localStorage.setItem("p",0); 
+         
+               localStorage.setItem("m", 1);
+               document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; }
+                 function myFunction44() {
+  
  
-  
+ if((document.getElementById("kl44").value)!="")
+ {
+ 
+            
+            let email=Date();
+    let name=document.getElementById("kl44").value;
+            // Save message
+            saveMessage(name, email);
+            
+        
 
-  return "u";
-}
-var count=0;
 
-  var sum=0;
-  var count=1;  
-function myFunction1() {
-	
-var j=["a1","s1","f1","t1","s2","i1","n1","r1"];
-jk=["Hoppala","sulochana store","F.M","T.D store","swagath","I.H","N.R navaratna","railway canteen"];
-  let x = document.getElementById("fruit"); 
-  for(i=0;i<10;i++){
-  if(x.value==j[i])
-  {
-  x.value=jk[i];
-}}
-  
-var b=document.getElementById("fruit").value
-if((document.getElementById("num").value)!="" &&b[(b.length)-1] ==".")
-{
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML =b;
-cell2.innerHTML =document.getElementById("num").value
+        
+        // Save message to Firebase
+        function saveMessage(name, email) {
+            let newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                email: email,
+            }).then(() => {
+                // Add the new message to the array
+                messageArray.push({ name, email });
+                // Call the function to display data after saving
+                
+            });
+        }
 
-count++;
-document.getElementById("fruit").value="";
-  sum+=parseInt(document.getElementById("num").value);
-document.getElementById("num").value="";
-  document.getElementById("fruit").value=""+count+".";
-  
-  document.getElementById("demo").innerHTML=sum;
-  document.getElementById("demo1").innerHTML=sum;
+
 }
-  if(count<15)
-  {
-  var h=""+count
-location.hash = h;
+document.getElementById("kl44").value=""; 
 }
-  return "u";
-}
+
+
+    
     
 
-</script>
-  </body>
+
+    
+        
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCx2K_Ji0mRflPnbxmqbVWv24O_sueerAg",
+            authDomain: "kk44-81f8e.firebaseapp.com",
+            databaseURL: "https://kk44-81f8e-default-rtdb.firebaseio.com",
+            projectId: "kk44-81f8e",
+            storageBucket: "kk44-81f8e.appspot.com",
+            messagingSenderId: "720386428137",
+            appId: "1:720386428137:web:946d8d62172c02557a3478",
+            measurementId: "G-WZY3Q18VFX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to messages collection
+        let messagesRef = firebase.database().ref('New-Fr');
+
+        // Global array to hold messages
+        let messageArray = [];
+
+        // Form submission
+             
+            
+
+
+
+        // Function to retrieve and display data
+      
+        // Call to fetch existing messages from Firebase and populate the array
+        messagesRef.once('value', (snapshot) => {
+            snapshot.forEach(childSnapshot => {
+                let message = childSnapshot.val();
+                messageArray.push(message);
+            });
+            // Display existing messages
+            displayMessages();
+        });
+
+
+ 
+               </script> 
+               </body>
+		  </html>

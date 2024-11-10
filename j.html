@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <input type="text" id="gg">
+ <button onclick="h()"></button> 
 <p id="g">j</p>
 <script>
  count=0
+ function h()
+  {
  document.cookie = document.getElementById("gg").value+document.cookie;
   document.getElementById("g").innerHTML=document.cookie;
+  }
 </script>
 
 

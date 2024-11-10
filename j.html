@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-
+<input type="text" id="gg">
 <p id="g">j</p>
 <script>
  count=0
- document.cookie = "username=Joh  "+document.cookie;
+ document.cookie = document.getElementById("gg").value+document.cookie;
   document.getElementById("g").innerHTML=document.cookie;
 </script>
 

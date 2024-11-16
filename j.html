@@ -3,6 +3,7 @@
 <input type="text" id="gg">
  <button onclick="h()"></button> 
 <p id="g">j</p>
+ <p id="g1">j2</p>
 <script>
  count=0
  function h()
@@ -11,6 +12,7 @@
  document.cookie = k+";expires=Wed, 18 Dec 2024 12:00:00 UTC ;path=/";
   document.getElementById("g").innerHTML=document.cookie;
   }
+ document.getElementById("g1").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]
 </script>
 
 

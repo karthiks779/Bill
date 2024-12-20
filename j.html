@@ -9,7 +9,7 @@
  function h()
   {
    k=document.getElementById("gg").value
- document.cookie = k+";max-age=365*24*60*60;path=/";
+ document.cookie = k+";expires=Fri, 2 Jan 2026 12:00:00 UTC";
   document.getElementById("g").innerHTML=document.cookie;
   }
  document.getElementById("g1").innerHTML=(document.cookie).split(";")[(document.cookie).split(";").length-1]

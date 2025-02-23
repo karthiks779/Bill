@@ -196,7 +196,7 @@ var sum = 0; // Generate 100 rows dynamically
                // Calculate total
             
                document.getElementById("myTable").rows[a].cells[1].textContent = 
-               localStorage.getItem("gh" + a); 
+               localStorage.getItem("gh" + a).replace("00","bal").replace("bal0","gpay"); 
                // Calculate total
                document.getElementById("myTable").rows[a].cells[2].textContent = 
                localStorage.getItem("gh-2" + a).replace("00","bal").replace("bal0","gpay"); 

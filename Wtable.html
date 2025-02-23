@@ -196,10 +196,10 @@ var sum = 0; // Generate 100 rows dynamically
                // Calculate total
             
                document.getElementById("myTable").rows[a].cells[1].textContent = 
-               localStorage.getItem("gh" + a).replace("00","bal").replace("bal0","gpay"); 
+               localStorage.getItem("gh" + a).split(".")[1].replace("00","bal").replace("bal0","gpay"); 
                // Calculate total
                document.getElementById("myTable").rows[a].cells[2].textContent = 
-               localStorage.getItem("gh-2" + a).replace("00","bal").replace("bal0","gpay"); 
+               localStorage.getItem("gh-2" + a).split(".")[1].replace("00","bal").replace("bal0","gpay"); 
                sum = 0;
                sum1 =0// Reset sum 
                for (var i = 0; i < 100; i++) 

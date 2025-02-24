@@ -203,8 +203,8 @@ var sum = 0; // Generate 100 rows dynamically
                sum = 0;
                sum1 =0// Reset sum 
                for (var i = 0; i < 100; i++) 
-               { sum +=parseInt(localStorage.getItem("gh" + i).replace(".","0.")); 
-                   sum1+=parseInt(localStorage.getItem("gh-2" + i).replace(".","0.")); 
+               { sum +=parseInt(localStorage.getItem("gh" + i).replace(".","0.")) || 0; 
+                   sum1+=parseInt(localStorage.getItem("gh-2" + i).replace(".","0.")) || 0; 
                }
                localStorage.setItem("m", sum);
                localStorage.setItem("m1", sum1);

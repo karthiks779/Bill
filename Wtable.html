@@ -82,7 +82,8 @@ input {
        
           <button type="button" onclick="storeAmount()">Store Amount</button> 
                    <input type="hidden" name="a" id="a"> 
-      <p id="totalAmount"></p> 
+      <p id="totalAmount"></p>
+		  <p id="total"></p>
           <table id="myTable">
                <tbody> <!-- Rows will be dynamically generated --> </tbody> 
                </table> 
@@ -219,6 +220,7 @@ var sum = 0; // Generate 100 rows dynamically
 			   tableBody.rows[a].cells[0].scrollIntoView(); 
                }
                }
+		       document.getElementById("total").innerHTML=localStorage.getItem("p")
                document.getElementById("a").value=localStorage.getItem("p"); 
          jj=parseInt(localStorage.getItem("m"))+parseInt(localStorage.getItem("m1"))
                document.getElementById("totalAmount").innerHTML = "Total Amount: " +jj 

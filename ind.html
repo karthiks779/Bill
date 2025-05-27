@@ -85,8 +85,11 @@ input {
           <table id="myTable">
                <tbody> <!-- Rows will be dynamically generated --> </tbody> 
                </table> 
-                         <button type="button" onclick="resetStorage()">Reset Storage</button> 
-    
+                         <button type="button" onclick="resetStorage()">Reset Storage</button>
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p id="result"></p>
+
+    
                <script>
                const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
@@ -223,6 +226,36 @@ var sum = 0; // Generate 100 rows dynamically
          
                localStorage.setItem("m", 1);
                document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; } 
+		       
+        function calculateSum() {
+            var startRowName = "John";
+            var endRowName = "Jane";
+            var table = document.getElementById("myTable");
+            var rows = table.rows;
+
+            var startRowNumber = -1;
+            var endRowNumber = -1;
+
+            for (var i = 1; i < rows.length; i++) {
+                if (rows[i].cells[1].innerHTML === startRowName) {
+                    startRowNumber = i;
+                }
+                if (rows[i].cells[1].innerHTML === endRowName) {
+                    endRowNumber = i;
+                }
+            }
+
+            if (startRowNumber !== -1 && endRowNumber !== -1) {
+                var sum = 0;
+                for (var i = startRowNumber; i <= endRowNumber; i++) {
+                    sum += rows[i].cells[0].textContent;
+                }
+                document.getElementById("result").innerHTML = "Sum of row numbers: " + sum;
+            } else {
+                document.getElementById("result").innerHTML = "One or both names not found.";
+            }
+        }
+    
                </script> 
                </body>
 </html>

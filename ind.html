@@ -228,8 +228,8 @@ var sum = 0; // Generate 100 rows dynamically
                document.getElementById("totalAmount").innerHTML = "Total Amount:"+ 0; } 
 		       
         function calculateSum() {
-            var startRowName = "John";
-            var endRowName = "Jane";
+            var startRowName = document.getElementById("myTable").rows[0].cells[0].textContent;
+            var endRowName = document.getElementById("myTable").rows[2].cells[0].textContent;
             var table = document.getElementById("myTable");
             var rows = table.rows;
 

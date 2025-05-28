@@ -82,17 +82,15 @@ input {
           <button type="button" onclick="storeAmount()">Store Amount</button> 
                    <input type="hidden" name="a" id="a"> 
       <p id="totalAmount"></p> 
+		  <input type="text" id="hj">
+    <input type="text" id="hj1">
+    <p id="result"></p>
           <table id="myTable">
                <tbody> <!-- Rows will be dynamically generated --> </tbody> 
                </table> 
                          <button type="button" onclick="resetStorage()">Reset Storage</button>
     <button onclick="calculateSum()">Calculate Sum</button>
-    <input type="text" id="hj">
-    <input type="text" id="hj1">
-    <p id="result"></p>
-
-    
-               <script>
+                 <script>
                const input = document.querySelector('#fruit');
 const suggestions = document.querySelector('.suggestions ul');
 
